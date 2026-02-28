@@ -1,9 +1,20 @@
 import QtQuick
 import Quickshell
+import Quickshell.Io
 import Quickshell.Wayland
 
 ShellRoot {
     id: root
+
+    property string wallpaperPath: "/home/jonas/wallpapers/moon.png"
+
+    IpcHandler {
+        target: "wallpaper"
+
+        function set(path: string) {
+            root.wallpaperPath = path;
+        }
+    }
 
     Variants {
         model: Quickshell.screens
@@ -30,7 +41,7 @@ ShellRoot {
 
                     anchors.fill: parent
 
-                    source: "/home/jonas/wallpapers/moon.png"
+                    source: root.wallpaperPath
                     fillMode: Image.PreserveAspectCrop
                 }
             }
