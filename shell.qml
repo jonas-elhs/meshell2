@@ -1,5 +1,6 @@
 import QtQuick
 import Quickshell
+import Quickshell.Wayland
 
 ShellRoot {
     id: root
@@ -12,21 +13,25 @@ ShellRoot {
             property ShellScreen modelData
 
             PanelWindow {
+                id: background
+
                 anchors.left: true
                 anchors.bottom: true
                 anchors.top: true
                 anchors.right: true
 
-                screen: scope.modelData
                 mask: Region {}
                 color: "transparent"
+                screen: scope.modelData
+                WlrLayershell.layer: WlrLayer.Background
 
-                Rectangle {
-                    anchors.centerIn: parent
+                Image {
+                    id: wallpaper
 
-                    color: "red"
-                    width: parent.width / 2
-                    height: parent.height / 2
+                    anchors.fill: parent
+
+                    source: "/home/jonas/wallpapers/moon.png"
+                    fillMode: Image.PreserveAspectCrop
                 }
             }
         }
