@@ -1,6 +1,6 @@
 import Quickshell
 import Quickshell.Io
-import qs.modules.background
+import qs.modules
 
 ShellRoot {
     id: root
@@ -24,6 +24,7 @@ ShellRoot {
 
             Background {
                 path: root.wallpaperPath
+                screen: scope.modelData
             }
         }
     }
