@@ -1,15 +1,18 @@
 import QtQuick
 import Quickshell
-import Quickshell.Io
 import Quickshell.Wayland
 
 PanelWindow {
     id: root
 
     required property string path
+    required property ShellScreen screen
 
     property Wallpaper current: wallpaper1
     property Wallpaper buffer: wallpaper2
+
+    WlrLayershell.layer: WlrLayer.Background
+    WlrLayershell.namespace: "meshell-background"
 
     anchors.left: true
     anchors.bottom: true
@@ -18,9 +21,8 @@ PanelWindow {
 
     mask: Region {}
     color: "transparent"
-    screen: scope.modelData
-    WlrLayershell.layer: WlrLayer.Background
-    WlrLayershell.namespace: "meshell-background"
+    screen: root.screen
+    exclusionMode: ExclusionMode.Ignore
 
     Component.onCompleted: updateWallpaper()
     Connections {
@@ -30,7 +32,6 @@ PanelWindow {
             root.updateWallpaper();
         }
     }
-
     function updateWallpaper() {
         // Update wallpaper path
         buffer.source = root.path;
@@ -40,8 +41,8 @@ PanelWindow {
         buffer.z = 2;
 
         // Fade buffer in and current out
-        current.opacity = 0;
         buffer.opacity = 1;
+        current.opacity = 0;
 
         // Swap buffer and current
         [current, buffer] = [buffer, current];
