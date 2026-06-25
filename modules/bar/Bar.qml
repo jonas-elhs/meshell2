@@ -1,6 +1,7 @@
 import QtQuick
 import Quickshell
 import Quickshell.Wayland
+import qs.components
 
 PanelWindow {
     id: root
@@ -27,19 +28,13 @@ PanelWindow {
         implicitHeight: parent.height
 
         // Clock
-        Rectangle {
+        BarModule {
             id: clock
 
             anchors.top: parent.top
 
-            implicitWidth: text.implicitWidth + 10
-            implicitHeight: text.implicitHeight + 10
-
-            color: "white"
-
             Text {
                 id: text
-                anchors.centerIn: parent
                 text: Qt.formatTime(time.date, "hh\nmm")
             }
         }
