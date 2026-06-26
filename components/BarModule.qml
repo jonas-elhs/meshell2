@@ -6,6 +6,8 @@ Rectangle {
     default property alias contentData: content.data
     property int padding: 10
 
+    signal scrolled(event: WheelEvent)
+
     color: "white"
     radius: 10
     border.width: 2
@@ -25,5 +27,10 @@ Rectangle {
 
     HoverHandler {
         id: hover
+    }
+
+    WheelHandler {
+        acceptedDevices: PointerDevice.Mouse | PointerDevice.TouchPad
+        onWheel: event => root.scrolled(event)
     }
 }
