@@ -25,13 +25,14 @@ PanelWindow {
     Item {
         id: content
 
-        implicitWidth: clock.implicitWidth
+        implicitWidth: Math.max(clock.implicitWidth, workspaces.implicitWidth)
         implicitHeight: parent.height
 
         // Clock
         BarModule {
             id: clock
 
+            width: content.width
             anchors.top: parent.top
 
             Text {
@@ -46,6 +47,7 @@ PanelWindow {
 
             property int workspaceCount: Math.max(Hyprland.workspaces.values.length, 5)
 
+            width: content.width
             anchors.verticalCenter: parent.verticalCenter
 
             onScrolled: event => {

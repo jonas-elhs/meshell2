@@ -19,10 +19,8 @@ Rectangle {
     Column {
         id: content
 
-        x: root.padding
-        y: root.padding
-
         spacing: root.padding
+        anchors.centerIn: parent
     }
 
     HoverHandler {
