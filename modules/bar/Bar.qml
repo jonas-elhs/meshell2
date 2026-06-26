@@ -44,7 +44,7 @@ PanelWindow {
         BarModule {
             id: workspaces
 
-            property int workspaceCount: 5
+            property int workspaceCount: Math.max(Hyprland.workspaces.values.length, 5)
 
             anchors.verticalCenter: parent.verticalCenter
 
