@@ -66,14 +66,20 @@ PanelWindow {
                     property int workspaceId: Hyprland.workspaces.values[index]?.id
                     property bool focused: Hyprland.focusedWorkspace.id == workspaceId
 
-                    color: focused ? "cyan" : "grey"
+                    color: focused ? "cyan" : hover.hovered ? "lightgrey" : "grey"
 
                     radius: diameter / 2
                     implicitWidth: diameter
-                    implicitHeight: focused ? 100 : diameter
+                    implicitHeight: focused ? 10 * diameter : diameter
 
                     TapHandler {
                         onTapped: Hyprland.dispatch(`hl.dsp.focus({ workspace = ${workspace.workspaceId} })`)
+                        margin: 2
+                    }
+
+                    HoverHandler {
+                        id: hover
+                        margin: 2
                     }
                 }
             }
