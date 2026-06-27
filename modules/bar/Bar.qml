@@ -35,9 +35,23 @@ PanelWindow {
             width: content.width
             anchors.top: parent.top
 
-            Text {
-                id: text
-                text: Qt.formatTime(time.date, "hh\nmm")
+            Column {
+                MaterialIcon {
+                    icon: "schedule"
+                    color: "cyan"
+                    weight: 500
+                    font.pointSize: 15
+
+                    anchors.horizontalCenter: parent.horizontalCenter
+                }
+
+                Text {
+                    id: text
+                    text: Qt.formatTime(time.date, "hh\nmm")
+                    font.pointSize: 13
+
+                    anchors.horizontalCenter: parent.horizontalCenter
+                }
             }
         }
 
