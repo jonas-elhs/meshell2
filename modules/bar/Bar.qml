@@ -65,8 +65,8 @@ PanelWindow {
 
                     required property int index
                     property int diameter: 10
-                    property int workspaceId: Hyprland.workspaces.values[index]?.id
-                    property bool focused: Hyprland.focusedWorkspace.id == workspaceId
+                    property int workspaceId: Hyprland.workspaces.values[index]?.id ?? -1
+                    property bool focused: (Hyprland.focusedWorkspace?.id ?? -2) == workspaceId
 
                     color: focused ? "cyan" : hover.hovered ? "lightgrey" : "grey"
 
