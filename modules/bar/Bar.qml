@@ -84,6 +84,13 @@ PanelWindow {
                         id: hover
                         margin: 2
                     }
+
+                    Behavior on color {
+                        CustomColorAnimation {}
+                    }
+                    Behavior on implicitHeight {
+                        CustomNumberAnimation {}
+                    }
                 }
             }
         }

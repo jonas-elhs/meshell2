@@ -1,6 +1,7 @@
 import QtQuick
 import Quickshell
 import Quickshell.Wayland
+import qs.components
 
 PanelWindow {
     id: root
@@ -63,9 +64,7 @@ PanelWindow {
         fillMode: Image.PreserveAspectCrop
 
         Behavior on opacity {
-            NumberAnimation {
-                duration: 200
-            }
+            CustomNumberAnimation {}
         }
     }
 }

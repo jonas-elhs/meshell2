@@ -1,4 +1,5 @@
 import QtQuick
+import qs.components
 
 Rectangle {
     id: root
@@ -32,5 +33,9 @@ Rectangle {
     WheelHandler {
         acceptedDevices: PointerDevice.Mouse | PointerDevice.TouchPad
         onWheel: event => root.scrolled(event)
+    }
+
+    Behavior on border.color {
+        CustomColorAnimation {}
     }
 }
