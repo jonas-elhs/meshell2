@@ -1,5 +1,6 @@
 import QtQuick
 import Quickshell
+import Quickshell.Io
 import Quickshell.Wayland
 import Quickshell.Hyprland
 import qs.components
@@ -25,7 +26,7 @@ PanelWindow {
     Item {
         id: content
 
-        implicitWidth: Math.max(clock.implicitWidth, workspaces.implicitWidth)
+        implicitWidth: Math.max(clock.implicitWidth, workspaces.implicitWidth, system.implicitWidth)
         implicitHeight: parent.height
 
         // Clock
@@ -36,6 +37,8 @@ PanelWindow {
             anchors.top: parent.top
 
             Column {
+                anchors.horizontalCenter: parent.horizontalCenter
+
                 MaterialIcon {
                     icon: "schedule"
                     color: "cyan"
@@ -46,7 +49,6 @@ PanelWindow {
                 }
 
                 Text {
-                    id: text
                     text: Qt.formatTime(time.date, "hh\nmm")
                     font.pointSize: 13
 
@@ -96,6 +98,119 @@ PanelWindow {
                     HoverHandler {
                         id: hover
                         margin: 2
+                    }
+                }
+            }
+        }
+
+        // System Stats
+        BarModule {
+            id: system
+
+            property int cpu: 0
+            property int gpu: 0
+            property int ram: 0
+            property int disk: 0
+
+            width: content.width
+            anchors.bottom: parent.bottom
+
+            padding: 0
+
+            Column {
+                anchors.horizontalCenter: parent.horizontalCenter
+
+                MaterialIcon {
+                    icon: "memory"
+                    color: "cyan"
+                    weight: 500
+                    font.pointSize: 15
+
+                    anchors.horizontalCenter: parent.horizontalCenter
+                }
+
+                Text {
+                    text: system.cpu + "%"
+                    font.pointSize: 13
+
+                    anchors.horizontalCenter: parent.horizontalCenter
+                }
+            }
+            Column {
+                anchors.horizontalCenter: parent.horizontalCenter
+
+                MaterialIcon {
+                    icon: "󰢮"
+                    color: "cyan"
+                    weight: 500
+                    font.pointSize: 15
+
+                    anchors.horizontalCenter: parent.horizontalCenter
+                }
+
+                Text {
+                    text: system.gpu + "%"
+                    font.pointSize: 13
+
+                    anchors.horizontalCenter: parent.horizontalCenter
+                }
+            }
+            Column {
+                anchors.horizontalCenter: parent.horizontalCenter
+
+                MaterialIcon {
+                    icon: "memory_alt"
+                    color: "cyan"
+                    weight: 500
+                    font.pointSize: 15
+
+                    anchors.horizontalCenter: parent.horizontalCenter
+                }
+
+                Text {
+                    text: system.ram + "%"
+                    font.pointSize: 13
+
+                    anchors.horizontalCenter: parent.horizontalCenter
+                }
+            }
+            Column {
+                anchors.horizontalCenter: parent.horizontalCenter
+
+                MaterialIcon {
+                    icon: "hard_drive"
+                    color: "cyan"
+                    weight: 500
+                    font.pointSize: 15
+
+                    anchors.horizontalCenter: parent.horizontalCenter
+                }
+
+                Text {
+                    text: system.disk + "%"
+                    font.pointSize: 13
+
+                    anchors.horizontalCenter: parent.horizontalCenter
+                }
+            }
+
+            Process {
+                id: process
+
+                command: [Quickshell.shellDir + "/scripts/system_stats.py"]
+                running: true
+
+                stdout: StdioCollector {
+                    waitForEnd: false
+
+                    onTextChanged: {
+                        const lines = this.text.trim().split("\n");
+                        const values = lines[lines.length - 1].split(";");
+
+                        system.cpu = Number(values[0]);
+                        system.gpu = Number(values[1]);
+                        system.ram = Number(values[2]);
+                        system.disk = Number(values[3]);
                     }
                 }
             }
