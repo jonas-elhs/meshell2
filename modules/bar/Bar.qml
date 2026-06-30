@@ -36,24 +36,9 @@ PanelWindow {
             width: content.width
             anchors.top: parent.top
 
-            Column {
-                anchors.horizontalCenter: parent.horizontalCenter
-
-                MaterialIcon {
-                    icon: "schedule"
-                    color: "cyan"
-                    weight: 500
-                    font.pointSize: 15
-
-                    anchors.horizontalCenter: parent.horizontalCenter
-                }
-
-                Text {
-                    text: Qt.formatTime(time.date, "hh\nmm")
-                    font.pointSize: 13
-
-                    anchors.horizontalCenter: parent.horizontalCenter
-                }
+            BarItem {
+                icon: "schedule"
+                text: Qt.formatTime(time.date, "hh\nmm")
             }
         }
 
@@ -117,81 +102,21 @@ PanelWindow {
 
             horizontalPadding: 0
 
-            Column {
-                anchors.horizontalCenter: parent.horizontalCenter
-
-                MaterialIcon {
-                    icon: "memory"
-                    color: "cyan"
-                    weight: 500
-                    font.pointSize: 15
-
-                    anchors.horizontalCenter: parent.horizontalCenter
-                }
-
-                Text {
-                    text: system.cpu + "%"
-                    font.pointSize: 13
-
-                    anchors.horizontalCenter: parent.horizontalCenter
-                }
+            BarItem {
+                icon: "memory"
+                text: system.cpu + "%"
             }
-            Column {
-                anchors.horizontalCenter: parent.horizontalCenter
-
-                MaterialIcon {
-                    icon: "󰢮"
-                    color: "cyan"
-                    weight: 500
-                    font.pointSize: 15
-
-                    anchors.horizontalCenter: parent.horizontalCenter
-                }
-
-                Text {
-                    text: system.gpu + "%"
-                    font.pointSize: 13
-
-                    anchors.horizontalCenter: parent.horizontalCenter
-                }
+            BarItem {
+                icon: "󰢮"
+                text: system.gpu + "%"
             }
-            Column {
-                anchors.horizontalCenter: parent.horizontalCenter
-
-                MaterialIcon {
-                    icon: "memory_alt"
-                    color: "cyan"
-                    weight: 500
-                    font.pointSize: 15
-
-                    anchors.horizontalCenter: parent.horizontalCenter
-                }
-
-                Text {
-                    text: system.ram + "%"
-                    font.pointSize: 13
-
-                    anchors.horizontalCenter: parent.horizontalCenter
-                }
+            BarItem {
+                icon: "memory_alt"
+                text: system.ram + "%"
             }
-            Column {
-                anchors.horizontalCenter: parent.horizontalCenter
-
-                MaterialIcon {
-                    icon: "hard_drive"
-                    color: "cyan"
-                    weight: 500
-                    font.pointSize: 15
-
-                    anchors.horizontalCenter: parent.horizontalCenter
-                }
-
-                Text {
-                    text: system.disk + "%"
-                    font.pointSize: 13
-
-                    anchors.horizontalCenter: parent.horizontalCenter
-                }
+            BarItem {
+                icon: "hard_drive"
+                text: system.disk + "%"
             }
 
             Process {
