@@ -115,7 +115,7 @@ PanelWindow {
             width: content.width
             anchors.bottom: parent.bottom
 
-            padding: 0
+            horizontalPadding: 0
 
             Column {
                 anchors.horizontalCenter: parent.horizontalCenter
