@@ -5,8 +5,6 @@ import qs.components
 BarModule {
     id: root
 
-    property int workspaceCount: Math.max(Hyprland.workspaces.values.length, 5)
-
     onScrolled: event => {
         if (event.angleDelta.y > 0)
             Hyprland.dispatch("hl.dsp.focus({ workspace = 'e-1' })");
@@ -15,7 +13,7 @@ BarModule {
     }
 
     Repeater {
-        model: root.workspaceCount
+        model: Hyprland.workspaces.values.length
 
         Rectangle {
             id: workspace
