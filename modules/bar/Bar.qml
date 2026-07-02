@@ -58,6 +58,13 @@ PanelWindow {
             anchors.verticalCenter: parent.verticalCenter
         }
 
+        PowerMenu {
+            id: power
+
+            visible: false
+            anchors.verticalCenter: parent.verticalCenter
+        }
+
         SystemStats {
             id: system
 
