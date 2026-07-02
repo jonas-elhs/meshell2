@@ -3,8 +3,10 @@ import QtQuick
 Item {
     id: root
 
-    property string icon: ""
     property string text: ""
+    property string icon: ""
+    property int iconSize: 15
+    property int iconWeight: 500
     property int spacing: 5
 
     implicitWidth: parent.width - 4 * spacing
@@ -35,8 +37,8 @@ Item {
 
             icon: root.icon
             color: "cyan"
-            weight: 500
-            font.pointSize: 15
+            weight: root.iconWeight
+            font.pointSize: root.iconSize
         }
 
         Text {

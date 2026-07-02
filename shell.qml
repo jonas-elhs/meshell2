@@ -6,22 +6,22 @@ import qs.modules.bar
 ShellRoot {
     id: root
 
+    property bool showPowerMenu: false
     property string wallpaperPath: "/home/jonas/wallpapers/moon.png"
-    property bool centerWorkspace: true
+
+    IpcHandler {
+        target: "power"
+
+        function toggle() {
+            root.showPowerMenu = !root.showPowerMenu;
+        }
+    }
 
     IpcHandler {
         target: "wallpaper"
 
         function set(path: string) {
             root.wallpaperPath = path;
-        }
-    }
-
-    IpcHandler {
-        target: "test"
-
-        function toggle() {
-            root.centerWorkspace = !root.centerWorkspace;
         }
     }
 
@@ -39,7 +39,7 @@ ShellRoot {
 
             Bar {
                 id: bar
-                cw: root.centerWorkspace
+                showPowerMenu: root.showPowerMenu
             }
 
             Exclusions {

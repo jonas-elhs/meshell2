@@ -6,7 +6,7 @@ import qs.components
 PanelWindow {
     id: root
 
-    required property bool cw
+    required property bool showPowerMenu
     readonly property int barWidth: 40
 
     WlrLayershell.layer: WlrLayer.Top
@@ -61,10 +61,9 @@ PanelWindow {
             }
 
             MultiModuleComponent {
-                condition: !root.cw
+                condition: root.showPowerMenu
 
-                Clock {
-                    width: content.width + 100
+                PowerMenu {
                     styled: false
                 }
             }
