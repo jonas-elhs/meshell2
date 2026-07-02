@@ -1,5 +1,6 @@
 import QtQuick
 import Quickshell
+import Quickshell.Hyprland
 import Quickshell.Wayland
 import qs.components
 
@@ -8,8 +9,15 @@ PanelWindow {
 
     property int barWidth
 
+    function togglePower() {
+        power.visible = !power.visible;
+        workspaces.visible = !workspaces.visible;
+        grab.active = true;
+    }
+
     WlrLayershell.layer: WlrLayer.Top
     WlrLayershell.namespace: "meshell-bar"
+    WlrLayershell.keyboardFocus: power.visible ? WlrKeyboardFocus.Exclusive : WlrKeyboardFocus.None
 
     Component.onCompleted: root.barWidth = Math.max(clock.implicitWidth, workspaces.implicitWidth, system.implicitWidth)
 
@@ -17,6 +25,12 @@ PanelWindow {
     anchors.bottom: true
     anchors.right: true
     anchors.top: true
+
+    margins.left: 20
+    margins.bottom: 20
+    margins.top: 20
+
+    color: "transparent"
 
     mask: Region {
         regions: [...moduleRegions.instances]
@@ -32,11 +46,15 @@ PanelWindow {
     }
     exclusionMode: ExclusionMode.Ignore
 
-    margins.left: 20
-    margins.bottom: 20
-    margins.top: 20
-
-    color: "transparent"
+    HyprlandFocusGrab {
+        id: grab
+        windows: [root]
+        // onCleared: {
+        //     console.log("cleared");
+        //     workspaces.visible = true;
+        //     power.visible = false;
+        // }
+    }
 
     Item {
         id: content

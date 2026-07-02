@@ -1,3 +1,6 @@
+pragma ComponentBehavior: Bound
+
+import QtQuick
 import Quickshell
 import Quickshell.Io
 import qs.modules
@@ -8,11 +11,20 @@ ShellRoot {
 
     property string wallpaperPath: "/home/jonas/wallpapers/moon.png"
 
+    property Bar b
+
     IpcHandler {
         target: "wallpaper"
 
         function set(path: string) {
             root.wallpaperPath = path;
+        }
+    }
+    IpcHandler {
+        target: "power"
+
+        function toggle() {
+            b.togglePower();
         }
     }
 
@@ -22,6 +34,8 @@ ShellRoot {
         Scope {
             id: scope
             property ShellScreen modelData
+
+            Component.onCompleted: root.b = bar
 
             Background {
                 path: root.wallpaperPath
