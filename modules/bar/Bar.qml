@@ -6,14 +6,31 @@ import qs.components
 PanelWindow {
     id: root
 
+    property int barWidth
+
     WlrLayershell.layer: WlrLayer.Top
     WlrLayershell.namespace: "meshell-bar"
 
-    implicitWidth: content.implicitWidth
+    Component.onCompleted: root.barWidth = Math.max(clock.implicitWidth, workspaces.implicitWidth, system.implicitWidth)
 
     anchors.left: true
     anchors.bottom: true
+    anchors.right: true
     anchors.top: true
+
+    mask: Region {
+        regions: [...moduleRegions.instances]
+    }
+    Variants {
+        id: moduleRegions
+        model: content.children
+
+        Region {
+            required property Item modelData
+            item: modelData
+        }
+    }
+    exclusionMode: ExclusionMode.Ignore
 
     margins.left: 20
     margins.bottom: 20
@@ -24,7 +41,7 @@ PanelWindow {
     Item {
         id: content
 
-        implicitWidth: Math.max(clock.implicitWidth, workspaces.implicitWidth, system.implicitWidth)
+        implicitWidth: root.barWidth
         implicitHeight: parent.height
 
         Clock {

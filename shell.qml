@@ -28,7 +28,13 @@ ShellRoot {
                 screen: scope.modelData
             }
 
-            Bar {}
+            Bar {
+                id: bar
+            }
+
+            Exclusions {
+                bar: bar
+            }
         }
     }
 }
