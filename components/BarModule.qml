@@ -22,6 +22,7 @@ Rectangle {
     Column {
         id: content
 
+        width: parent.width
         spacing: root.padding
         anchors.centerIn: parent
     }

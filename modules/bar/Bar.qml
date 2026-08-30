@@ -6,12 +6,10 @@ import qs.components
 PanelWindow {
     id: root
 
-    property int barWidth
+    property int barWidth: 40
 
     WlrLayershell.layer: WlrLayer.Top
     WlrLayershell.namespace: "meshell-bar"
-
-    Component.onCompleted: root.barWidth = Math.max(clock.implicitWidth, workspaces.implicitWidth, system.implicitWidth)
 
     anchors.left: true
     anchors.bottom: true
