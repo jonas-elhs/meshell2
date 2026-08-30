@@ -1,26 +1,58 @@
 import QtQuick
 
-Column {
+Item {
     id: root
 
     required property string icon
     required property string text
+    property int spacing: 5
+
+    implicitWidth: parent.width - 4 * spacing
+    implicitHeight: content.implicitHeight
 
     anchors.horizontalCenter: parent.horizontalCenter
 
-    MaterialIcon {
-        icon: root.icon
-        color: "cyan"
-        weight: 500
-        font.pointSize: 15
+    Rectangle {
+        id: background
 
-        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.fill: parent
+
+        anchors.margins: -root.spacing
+        anchors.topMargin: -root.spacing + (root.spacing - 2) / 2 // - 2 = BarModule.border.width
+        anchors.bottomMargin: -root.spacing + (root.spacing - 2) / 2 // - 2 = BarModule.border.width
+
+        color: hover.hovered ? "lightgrey" : "transparent"
+        radius: 10 - root.spacing // 10 = BarModule.padding
+
+        Behavior on color {
+            CustomColorAnimation {}
+        }
     }
 
-    Text {
-        text: root.text
-        font.pointSize: 13
+    Column {
+        id: content
 
         anchors.horizontalCenter: parent.horizontalCenter
+
+        MaterialIcon {
+            icon: root.icon
+            color: "cyan"
+            weight: 500
+            font.pointSize: 15
+
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
+
+        Text {
+            text: root.text
+            font.pointSize: 13
+
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
+    }
+
+    HoverHandler {
+        id: hover
+        margin: root.spacing
     }
 }

@@ -10,8 +10,6 @@ BarModule {
     property int ram: 0
     property int disk: 0
 
-    horizontalPadding: 0
-
     BarItem {
         icon: "memory"
         text: root.cpu + "%"
