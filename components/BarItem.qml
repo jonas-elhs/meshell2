@@ -3,8 +3,8 @@ import QtQuick
 Item {
     id: root
 
-    required property string icon
-    required property string text
+    property string icon: ""
+    property string text: ""
     property int spacing: 5
 
     implicitWidth: parent.width - 4 * spacing
