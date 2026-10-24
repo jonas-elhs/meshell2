@@ -12,19 +12,20 @@ BarModule {
 
     BarItem {
         icon: "memory"
-        text: root.cpu + "%"
+        text: root.cpu
     }
+
     BarItem {
         icon: "󰢮"
-        text: root.gpu + "%"
+        text: root.gpu
     }
     BarItem {
         icon: "memory_alt"
-        text: root.ram + "%"
+        text: root.ram
     }
     BarItem {
         icon: "hard_drive"
-        text: root.disk + "%"
+        text: root.disk
     }
 
     Process {
