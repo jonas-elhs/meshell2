@@ -7,12 +7,21 @@ ShellRoot {
     id: root
 
     property string wallpaperPath: "/home/jonas/wallpapers/moon.png"
+    property bool centerWorkspace: true
 
     IpcHandler {
         target: "wallpaper"
 
         function set(path: string) {
             root.wallpaperPath = path;
+        }
+    }
+
+    IpcHandler {
+        target: "test"
+
+        function toggle() {
+            root.centerWorkspace = !root.centerWorkspace;
         }
     }
 
@@ -30,6 +39,7 @@ ShellRoot {
 
             Bar {
                 id: bar
+                cw: root.centerWorkspace
             }
 
             Exclusions {

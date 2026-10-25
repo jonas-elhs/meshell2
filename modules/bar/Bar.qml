@@ -6,6 +6,7 @@ import qs.components
 PanelWindow {
     id: root
 
+    required property bool cw
     readonly property int barWidth: 40
 
     WlrLayershell.layer: WlrLayer.Top
@@ -49,11 +50,25 @@ PanelWindow {
             anchors.top: parent.top
         }
 
-        Workspaces {
-            id: workspaces
-
+        BarMultiModule {
             width: content.width
             anchors.verticalCenter: parent.verticalCenter
+
+            MultiModuleComponent {
+                Workspaces {
+                    width: content.width
+                    styled: false
+                }
+            }
+
+            MultiModuleComponent {
+                condition: !root.cw
+
+                Clock {
+                    width: content.width
+                    styled: false
+                }
+            }
         }
 
         SystemStats {
