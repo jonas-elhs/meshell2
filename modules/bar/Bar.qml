@@ -6,7 +6,7 @@ import qs.components
 PanelWindow {
     id: root
 
-    property int barWidth: 40
+    readonly property int barWidth: 40
 
     WlrLayershell.layer: WlrLayer.Top
     WlrLayershell.namespace: "meshell-bar"
