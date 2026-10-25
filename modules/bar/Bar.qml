@@ -51,7 +51,6 @@ PanelWindow {
         }
 
         BarMultiModule {
-            width: content.width
             anchors.verticalCenter: parent.verticalCenter
 
             MultiModuleComponent {
@@ -65,7 +64,7 @@ PanelWindow {
                 condition: !root.cw
 
                 Clock {
-                    width: content.width
+                    width: content.width + 100
                     styled: false
                 }
             }

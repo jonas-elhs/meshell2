@@ -7,14 +7,63 @@ BarModule {
 
     readonly property Component defaultModule: modules[0]?.component ?? null
     readonly property Component conditionalModule: modules.find(module => module.condition)?.component ?? null
+    readonly property Component module: root.conditionalModule ?? root.defaultModule ?? null
 
-    padding: loader.item.padding
-    adjustContentSpacing: loader.item.adjustContentSpacing
-    onScrolled: loader.item.onScrolled
+    padding: current.item.padding
+    adjustContentSpacing: current.item.adjustContentSpacing
+    onScrolled: current.item.onScrolled
 
-    Loader {
-        id: loader
+    property ModuleLoader current: loader1
+    property ModuleLoader next: loader2
 
-        sourceComponent: root.conditionalModule ?? root.defaultModule ?? null
+    Item {
+        implicitWidth: root.current.implicitWidth
+        implicitHeight: root.current.implicitHeight
+
+        ModuleLoader {
+            id: loader1
+        }
+        ModuleLoader {
+            id: loader2
+        }
+
+        Behavior on implicitWidth {
+            CustomNumberAnimation {}
+        }
+        Behavior on implicitHeight {
+            CustomNumberAnimation {}
+        }
+    }
+
+    Component.onCompleted: updateModule()
+    Connections {
+        target: root
+
+        function onModuleChanged() {
+            root.updateModule();
+        }
+    }
+    function updateModule() {
+        current.z = 1;
+        current.scale = 0;
+        current.opacity = 0;
+
+        next.sourceComponent = root.module;
+        next.z = 2;
+        next.scale = 1;
+        next.opacity = 1;
+
+        [current, next] = [next, current];
+    }
+
+    component ModuleLoader: Loader {
+        anchors.verticalCenter: parent.verticalCenter
+
+        Behavior on scale {
+            CustomNumberAnimation {}
+        }
+        Behavior on opacity {
+            CustomNumberAnimation {}
+        }
     }
 }
