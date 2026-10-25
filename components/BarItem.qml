@@ -9,14 +9,12 @@ Item {
 
     implicitWidth: parent.width - 4 * spacing
     implicitHeight: content.implicitHeight
-
     anchors.horizontalCenter: parent.horizontalCenter
 
     Rectangle {
         id: background
 
         anchors.fill: parent
-
         anchors.margins: -root.spacing
         anchors.topMargin: -root.spacing + (root.spacing - 2) / 2 // - 2 = BarModule.border.width
         anchors.bottomMargin: -root.spacing + (root.spacing - 2) / 2 // - 2 = BarModule.border.width
@@ -35,19 +33,19 @@ Item {
         anchors.horizontalCenter: parent.horizontalCenter
 
         MaterialIcon {
+            anchors.horizontalCenter: parent.horizontalCenter
+
             icon: root.icon
             color: "cyan"
             weight: 500
             font.pointSize: 15
-
-            anchors.horizontalCenter: parent.horizontalCenter
         }
 
         Text {
+            anchors.horizontalCenter: parent.horizontalCenter
+
             text: root.text
             font.pointSize: 13
-
-            anchors.horizontalCenter: parent.horizontalCenter
         }
     }
 

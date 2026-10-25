@@ -24,12 +24,12 @@ BarModule {
             property int workspaceId: Hyprland.workspaces.values[index]?.id ?? -1
             property bool focused: (Hyprland.focusedWorkspace?.id ?? -2) == workspaceId
 
-            color: focused ? (hover.hovered ? "lightcyan" : "cyan") : hover.hovered ? "lightgrey" : "grey"
-
-            radius: diameter / 2
             implicitWidth: diameter
             implicitHeight: focused ? 10 * diameter : diameter
             anchors.horizontalCenter: parent.horizontalCenter
+
+            color: focused ? (hover.hovered ? "lightcyan" : "cyan") : hover.hovered ? "lightgrey" : "grey"
+            radius: width / 2
 
             TapHandler {
                 onTapped: Hyprland.dispatch(`hl.dsp.focus({ workspace = ${workspace.workspaceId} })`)
