@@ -6,6 +6,7 @@ Rectangle {
 
     default property alias contentData: content.data
     property int padding: 10
+    property bool adjustVerticalPadding: true
 
     signal scrolled(event: WheelEvent)
 
@@ -22,8 +23,8 @@ Rectangle {
 
         width: parent.width
         spacing: root.padding
-        topPadding: root.padding - (root.padding / 2 - 2) / 2 // - 2 = border.width
-        bottomPadding: root.padding - (root.padding / 2 - 2) / 2 // - 2 = border.width
+        topPadding: root.padding - (root.adjustVerticalPadding ? (root.padding / 2 - root.border.width) / 2 : 0)
+        bottomPadding: root.padding - (root.adjustVerticalPadding ? (root.padding / 2 - root.border.width) / 2 : 0)
     }
 
     HoverHandler {

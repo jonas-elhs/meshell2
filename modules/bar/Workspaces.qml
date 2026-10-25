@@ -5,6 +5,7 @@ import qs.components
 BarModule {
     id: root
 
+    adjustVerticalPadding: false
     onScrolled: event => {
         if (event.angleDelta.y > 0)
             Hyprland.dispatch("hl.dsp.focus({ workspace = 'e-1' })");
