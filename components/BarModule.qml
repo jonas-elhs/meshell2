@@ -6,12 +6,10 @@ Rectangle {
 
     default property alias contentData: content.data
     property int padding: 10
-    property bool adjustVerticalPadding: true
+    property bool adjustContentSpacing: true
     property bool styled: true
 
     signal scrolled(event: WheelEvent)
-
-    readonly property int verticalContentPadding: root.padding - (root.adjustVerticalPadding ? (root.padding / 2 - root.border.width) / 2 : 0)
 
     color: styled ? "white" : "transparent"
     radius: 10
@@ -25,9 +23,9 @@ Rectangle {
         id: content
 
         width: parent.width
-        spacing: root.padding
-        topPadding: root.styled ? root.verticalContentPadding : 0
-        bottomPadding: root.styled ? root.verticalContentPadding : 0
+        spacing: root.padding + (root.adjustContentSpacing ? root.padding / 2 - root.border.width : 0)
+        topPadding: root.styled ? root.padding : 0
+        bottomPadding: root.styled ? root.padding : 0
     }
 
     HoverHandler {

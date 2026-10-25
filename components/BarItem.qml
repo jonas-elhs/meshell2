@@ -16,8 +16,6 @@ Item {
 
         anchors.fill: parent
         anchors.margins: -root.spacing
-        anchors.topMargin: -root.spacing + (root.spacing - 2) / 2 // - 2 = BarModule.border.width
-        anchors.bottomMargin: -root.spacing + (root.spacing - 2) / 2 // - 2 = BarModule.border.width
 
         color: hover.hovered ? "lightgrey" : "transparent"
         radius: 10 - root.spacing // 10 = BarModule.padding

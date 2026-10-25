@@ -9,7 +9,7 @@ BarModule {
     readonly property Component conditionalModule: modules.find(module => module.condition)?.component ?? null
 
     padding: loader.item.padding
-    adjustVerticalPadding: loader.item.adjustVerticalPadding
+    adjustContentSpacing: loader.item.adjustContentSpacing
     onScrolled: loader.item.onScrolled
 
     Loader {
