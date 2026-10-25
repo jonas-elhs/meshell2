@@ -17,7 +17,7 @@ Item {
         anchors.fill: parent
         anchors.margins: -root.spacing
 
-        color: hover.hovered ? "lightgrey" : "transparent"
+        color: hover.hovered ? "lightgrey" : "white"
         radius: 10 - root.spacing // 10 = BarModule.padding
 
         Behavior on color {
