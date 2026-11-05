@@ -10,7 +10,7 @@ PanelWindow {
     required property ShellScreen screen
 
     property Wallpaper current: wallpaper1
-    property Wallpaper buffer: wallpaper2
+    property Wallpaper next: wallpaper2
 
     WlrLayershell.layer: WlrLayer.Background
     WlrLayershell.namespace: "meshell-background"
@@ -25,6 +25,13 @@ PanelWindow {
     screen: root.screen
     exclusionMode: ExclusionMode.Ignore
 
+    Wallpaper {
+        id: wallpaper1
+    }
+    Wallpaper {
+        id: wallpaper2
+    }
+
     Component.onCompleted: updateWallpaper()
     Connections {
         target: root
@@ -34,26 +41,14 @@ PanelWindow {
         }
     }
     function updateWallpaper() {
-        // Update wallpaper path
-        buffer.source = root.path;
-
-        // Position buffer above current
         current.z = 1;
-        buffer.z = 2;
-
-        // Fade buffer in and current out
-        buffer.opacity = 1;
         current.opacity = 0;
 
-        // Swap buffer and current
-        [current, buffer] = [buffer, current];
-    }
+        next.source = root.path;
+        next.z = 2;
+        next.opacity = 1;
 
-    Wallpaper {
-        id: wallpaper1
-    }
-    Wallpaper {
-        id: wallpaper2
+        [current, next] = [next, current];
     }
 
     component Wallpaper: Image {
