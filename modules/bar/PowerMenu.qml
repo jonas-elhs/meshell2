@@ -3,7 +3,7 @@ import Quickshell
 import qs.components
 
 BarModule {
-    width: 110
+    width: 120
 
     PowerButton {
         icon: "stop_circle"
@@ -35,7 +35,7 @@ BarModule {
             Quickshell.execDetached(command);
         }
 
-        iconSize: 50
-        iconWeight: 700
+        iconSize: 60
+        iconWeight: 600
     }
 }
