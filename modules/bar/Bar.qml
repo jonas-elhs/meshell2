@@ -1,6 +1,7 @@
 import QtQuick
 import Quickshell
 import Quickshell.Wayland
+import Quickshell.Hyprland
 import qs.components
 
 PanelWindow {
@@ -8,6 +9,7 @@ PanelWindow {
 
     required property bool showPowerMenu
     readonly property int barWidth: 40
+    signal closePowerMenuRequested
 
     WlrLayershell.layer: WlrLayer.Top
     WlrLayershell.namespace: "meshell-bar"
@@ -37,6 +39,13 @@ PanelWindow {
 
     color: "transparent"
 
+    HyprlandFocusGrab {
+        active: root.showPowerMenu
+        windows: [root]
+
+        onCleared: root.closePowerMenuRequested()
+    }
+
     Item {
         id: content
 
@@ -65,6 +74,7 @@ PanelWindow {
 
                 PowerMenu {
                     styled: false
+                    onCloseRequested: root.closePowerMenuRequested()
                 }
             }
         }

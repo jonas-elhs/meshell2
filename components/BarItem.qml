@@ -11,6 +11,8 @@ Item {
 
     signal clicked
 
+    focus: true
+
     implicitWidth: parent.width - 4 * spacing
     implicitHeight: content.implicitHeight
     anchors.horizontalCenter: parent.horizontalCenter
@@ -21,7 +23,7 @@ Item {
         anchors.fill: parent
         anchors.margins: -root.spacing
 
-        color: hover.hovered ? "lightgrey" : "white"
+        color: hover.hovered || root.activeFocus ? "lightgrey" : "white"
         radius: 10 - root.spacing // 10 = BarModule.padding
 
         Behavior on color {
@@ -58,5 +60,10 @@ Item {
     HoverHandler {
         id: hover
         margin: root.spacing
+
+        onHoveredChanged: {
+            if (hovered)
+                root.forceActiveFocus();
+        }
     }
 }
