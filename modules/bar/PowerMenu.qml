@@ -31,9 +31,7 @@ BarModule {
 
         required property list<string> command
 
-        function execute() {
-            Quickshell.execDetached(command);
-        }
+        onClicked: Quickshell.execDetached(command)
 
         iconSize: 60
         iconWeight: 600

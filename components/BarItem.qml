@@ -9,6 +9,8 @@ Item {
     property int iconWeight: 500
     property int spacing: 5
 
+    signal clicked
+
     implicitWidth: parent.width - 4 * spacing
     implicitHeight: content.implicitHeight
     anchors.horizontalCenter: parent.horizontalCenter
@@ -47,6 +49,10 @@ Item {
             text: root.text
             font.pointSize: 13
         }
+    }
+
+    TapHandler {
+        onTapped: root.clicked()
     }
 
     HoverHandler {
