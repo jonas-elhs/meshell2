@@ -33,13 +33,7 @@ PanelWindow {
     }
 
     Component.onCompleted: updateWallpaper()
-    Connections {
-        target: root
-
-        function onPathChanged() {
-            root.updateWallpaper();
-        }
-    }
+    onPathChanged: updateWallpaper()
     function updateWallpaper() {
         current.z = 1;
         current.opacity = 0;

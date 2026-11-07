@@ -36,13 +36,7 @@ BarModule {
     }
 
     Component.onCompleted: updateModule()
-    Connections {
-        target: root
-
-        function onModuleChanged() {
-            root.updateModule();
-        }
-    }
+    onModuleChanged: updateModule()
     function updateModule() {
         current.z = 1;
         current.scale = 0;
