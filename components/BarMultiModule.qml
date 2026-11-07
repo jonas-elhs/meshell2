@@ -11,7 +11,7 @@ BarModule {
 
     padding: current.item.padding
     adjustContentSpacing: current.item.adjustContentSpacing
-    onScrolled: current.item.onScrolled
+    onScrolled: event => current.item.onScrolled(event)
 
     property ModuleLoader current: loader1
     property ModuleLoader next: loader2
