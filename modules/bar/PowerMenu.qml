@@ -2,7 +2,6 @@ import QtQuick
 import Quickshell
 import qs.components
 
-// TODO: slightly too large spacing between buttons
 BarModule {
     width: 110
 

@@ -23,7 +23,7 @@ Rectangle {
         id: content
 
         width: parent.width
-        spacing: root.padding + (root.adjustContentSpacing ? root.padding / 2 - root.border.width : 0)
+        spacing: root.padding + (root.adjustContentSpacing ? root.padding / 2 - 2 : 0) // - 2: 2 = border width, can't use because doesn't work if not styled
         topPadding: root.styled ? root.padding : 0
         bottomPadding: root.styled ? root.padding : 0
     }
