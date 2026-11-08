@@ -32,12 +32,12 @@ BarModule {
             radius: width / 2
 
             TapHandler {
+                margin: 5
                 onTapped: Hyprland.dispatch(`hl.dsp.focus({ workspace = ${workspace.workspaceId} })`)
-                margin: 2
             }
             HoverHandler {
                 id: hover
-                margin: 2
+                margin: 5
             }
 
             Behavior on color {
