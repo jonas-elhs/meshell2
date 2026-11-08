@@ -7,7 +7,7 @@ Item {
     property string icon: ""
     property int iconSize: 15
     property int iconWeight: 500
-    property int spacing: 5
+    property int spacing: Config.spacing / 4
     property bool focusable: false
     property int acceptedButtons: Qt.LeftButton
 
@@ -25,8 +25,8 @@ Item {
         anchors.fill: parent
         anchors.margins: -root.spacing
 
-        color: hover.hovered || root.activeFocus ? "lightgrey" : "white"
-        radius: 10 - root.spacing // 10 = BarModule.padding
+        color: hover.hovered || root.activeFocus ? Color.transparent(Config.foregroundColor, 0.2) : Color.transparent(Config.foregroundColor, 0)
+        radius: Config.borderRadius - root.spacing
 
         Behavior on color {
             CustomColorAnimation {}
@@ -42,7 +42,7 @@ Item {
             anchors.horizontalCenter: parent.horizontalCenter
 
             icon: root.icon
-            color: "cyan"
+            color: Config.accentColor
             weight: root.iconWeight
             font.pointSize: root.iconSize
         }
@@ -51,6 +51,7 @@ Item {
             anchors.horizontalCenter: parent.horizontalCenter
 
             text: root.text
+            color: Config.foregroundColor
             font.pointSize: 13
         }
     }

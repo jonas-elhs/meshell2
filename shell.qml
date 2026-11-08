@@ -32,6 +32,7 @@ ShellRoot {
 
         Scope {
             id: scope
+
             property ShellScreen modelData
 
             Background {

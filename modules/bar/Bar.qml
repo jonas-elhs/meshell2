@@ -33,9 +33,9 @@ PanelWindow {
     }
     exclusionMode: ExclusionMode.Ignore
 
-    margins.left: 20
-    margins.bottom: 20
-    margins.top: 20
+    margins.top: Config.spacing
+    margins.left: Config.spacing
+    margins.bottom: Config.spacing
 
     color: "transparent"
 
@@ -84,7 +84,7 @@ PanelWindow {
 
             width: content.width
             anchors.bottom: power.top
-            anchors.bottomMargin: 20
+            anchors.bottomMargin: Config.spacing
         }
         PowerButton {
             id: power

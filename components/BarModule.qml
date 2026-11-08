@@ -5,16 +5,16 @@ Rectangle {
     id: root
 
     default property alias contentData: content.data
-    property int padding: 10
+    property int padding: Config.spacing / 2
     property bool adjustContentSpacing: true
     property bool styled: true
 
     signal scrolled(event: WheelEvent)
 
-    color: styled ? "white" : "transparent"
-    radius: 10
-    border.width: styled ? 2 : 0
-    border.color: hover.hovered ? "cyan" : "grey"
+    color: styled ? Color.transparent(Config.backgroundColor, 0.01) : "transparent"
+    radius: Config.borderRadius
+    border.width: styled ? Config.borderWidth : 0
+    border.color: hover.hovered || activeFocus ? Config.accentColor : Config.inactiveColor
 
     implicitWidth: content.implicitWidth
     implicitHeight: content.implicitHeight
@@ -23,7 +23,7 @@ Rectangle {
         id: content
 
         width: parent.width
-        spacing: root.padding + (root.adjustContentSpacing ? root.padding / 2 - 2 : 0) // - 2: 2 = border width, can't use because doesn't work if not styled
+        spacing: root.padding + (root.adjustContentSpacing ? root.padding / 2 - Config.borderWidth : 0)
         topPadding: root.styled ? root.padding : 0
         bottomPadding: root.styled ? root.padding : 0
     }
