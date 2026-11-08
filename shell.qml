@@ -42,7 +42,7 @@ ShellRoot {
             Bar {
                 id: bar
                 showPowerMenu: root.showPowerMenu
-                onClosePowerMenuRequested: root.showPowerMenu = false
+                onPowerMenuRequested: root.showPowerMenu = !root.showPowerMenu
             }
 
             Exclusions {

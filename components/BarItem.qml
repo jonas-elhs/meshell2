@@ -9,8 +9,9 @@ Item {
     property int iconWeight: 500
     property int spacing: 5
     property bool focusable: false
+    property int acceptedButtons: Qt.LeftButton
 
-    signal clicked
+    signal clicked(int button)
 
     focus: true
 
@@ -55,7 +56,8 @@ Item {
     }
 
     TapHandler {
-        onTapped: root.clicked()
+        acceptedButtons: root.acceptedButtons
+        onTapped: (_, button) => root.clicked(button)
     }
 
     HoverHandler {
