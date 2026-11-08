@@ -8,6 +8,7 @@ Item {
     property int iconSize: 15
     property int iconWeight: 500
     property int spacing: 5
+    property bool focusable: false
 
     signal clicked
 
@@ -62,7 +63,7 @@ Item {
         margin: root.spacing
 
         onHoveredChanged: {
-            if (hovered)
+            if (root.focusable && hovered)
                 root.forceActiveFocus();
         }
     }

@@ -72,6 +72,7 @@ BarModule {
 
         iconSize: 60
         iconWeight: 600
+        focusable: true
 
         Keys.onEnterPressed: event => {
             trigger();
