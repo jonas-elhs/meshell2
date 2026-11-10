@@ -28,7 +28,7 @@ BarModule {
             implicitHeight: focused ? 10 * diameter : diameter
             anchors.horizontalCenter: parent.horizontalCenter
 
-            color: focused ? Color.lighter(Config.accentColor, hover.hovered ? 1.2 : 1) : Color.lighter(Config.foregroundColor, hover.hovered ? 1.2 : 1)
+            color: focused ? Color.lighter(Config.accentColor, hover.hovered ? 1.4 : 1) : Color.lighter(Config.foregroundColor, hover.hovered ? 1.4 : 1)
             radius: width / 2
 
             TapHandler {
