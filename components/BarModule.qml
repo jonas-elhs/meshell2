@@ -1,7 +1,7 @@
 import QtQuick
 import qs.components
 
-Rectangle {
+FocusScope {
     id: root
 
     default property alias contentData: content.data
@@ -11,13 +11,23 @@ Rectangle {
 
     signal scrolled(event: WheelEvent)
 
-    color: styled ? Color.transparent(Config.backgroundColor, 0.01) : "transparent"
-    radius: Config.borderRadius
-    border.width: styled ? Config.borderWidth : 0
-    border.color: hover.hovered || activeFocus ? Config.accentColor : Config.inactiveColor
-
     implicitWidth: content.implicitWidth
     implicitHeight: content.implicitHeight
+
+    Rectangle {
+        id: background
+
+        anchors.fill: parent
+
+        color: root.styled ? Color.transparent(Config.backgroundColor, 0.01) : "transparent"
+        radius: Config.borderRadius
+        border.width: root.styled ? Config.borderWidth : 0
+        border.color: hover.hovered || root.activeFocus ? Config.accentColor : Config.inactiveColor
+
+        Behavior on border.color {
+            CustomColorAnimation {}
+        }
+    }
 
     Column {
         id: content
@@ -35,9 +45,5 @@ Rectangle {
     WheelHandler {
         acceptedDevices: PointerDevice.Mouse | PointerDevice.TouchPad
         onWheel: event => root.scrolled(event)
-    }
-
-    Behavior on border.color {
-        CustomColorAnimation {}
     }
 }
