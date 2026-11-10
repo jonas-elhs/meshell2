@@ -7,6 +7,7 @@ Item {
     property string icon: ""
     property int iconSize: 15
     property int iconWeight: 500
+    property string iconColor: Config.accentColor
     property int spacing: Config.spacing / 4
     property bool focusable: false
     property int acceptedButtons: Qt.LeftButton
@@ -42,7 +43,7 @@ Item {
             anchors.horizontalCenter: parent.horizontalCenter
 
             icon: root.icon
-            color: Config.accentColor
+            color: root.iconColor
             weight: root.iconWeight
             font.pointSize: root.iconSize
         }

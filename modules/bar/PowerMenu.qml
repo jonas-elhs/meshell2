@@ -71,6 +71,7 @@ BarModule {
         onClicked: trigger()
 
         iconSize: 60
+        iconColor: Config.foregroundColor
         iconWeight: 600
         focusable: true
 
