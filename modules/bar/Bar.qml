@@ -9,7 +9,7 @@ PanelWindow {
 
     required property bool showPowerMenu
     readonly property int barWidth: 40
-    signal powerMenuRequested
+    signal powerMenuToggleRequested
 
     WlrLayershell.layer: WlrLayer.Top
     WlrLayershell.namespace: "meshell-bar"
@@ -43,7 +43,7 @@ PanelWindow {
         active: root.showPowerMenu
         windows: [root]
 
-        onCleared: root.powerMenuRequested()
+        onCleared: root.powerMenuToggleRequested()
     }
 
     Item {
@@ -74,7 +74,7 @@ PanelWindow {
 
                 PowerMenu {
                     styled: false
-                    onCloseRequested: root.powerMenuRequested()
+                    onCloseRequested: root.powerMenuToggleRequested()
                 }
             }
         }
@@ -92,7 +92,7 @@ PanelWindow {
             width: content.width
             anchors.bottom: parent.bottom
 
-            onPowerMenuRequested: root.powerMenuRequested()
+            onPowerMenuToggleRequested: root.powerMenuToggleRequested()
         }
     }
 }
