@@ -16,7 +16,7 @@ BarModule {
     PowerButton {
         id: suspend
 
-        icon: "stop_circle"
+        icon: "bedtime"
         command: ["systemctl", "suspend"]
 
         KeyNavigation.up: lock
