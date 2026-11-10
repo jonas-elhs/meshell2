@@ -58,7 +58,9 @@ Item {
     }
 
     TapHandler {
+        margin: root.spacing
         acceptedButtons: root.acceptedButtons
+
         onTapped: (_, button) => root.clicked(button)
     }
 
