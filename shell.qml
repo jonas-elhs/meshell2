@@ -12,17 +12,13 @@ ShellRoot {
     property string wallpaperPath: "/home/jonas/wallpapers/moon.png"
 
     IpcHandler {
-        target: "power"
+        target: "shell"
 
-        function toggle() {
+        function togglePowerMenu() {
             root.showPowerMenu = !root.showPowerMenu;
         }
-    }
 
-    IpcHandler {
-        target: "wallpaper"
-
-        function set(path: string) {
+        function setWallpaper(path: string) {
             root.wallpaperPath = path;
         }
     }
