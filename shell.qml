@@ -2,6 +2,7 @@ pragma ComponentBehavior: Bound
 
 import Quickshell
 import Quickshell.Io
+import Quickshell.Hyprland
 import qs.modules
 import qs.modules.bar
 
@@ -21,6 +22,12 @@ ShellRoot {
         function setWallpaper(path: string) {
             root.wallpaperPath = path;
         }
+    }
+    GlobalShortcut {
+        name: "power"
+        appid: "meshell"
+        description: "Toggle power menu"
+        onPressed: root.showPowerMenu = !root.showPowerMenu
     }
 
     Variants {
