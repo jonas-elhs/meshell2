@@ -42,6 +42,7 @@ BarModule {
         current.scale = 0;
         current.opacity = 0;
 
+        next.sourceComponent = null;
         next.sourceComponent = root.module;
         next.z = 2;
         next.scale = 1;
