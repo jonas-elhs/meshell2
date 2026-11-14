@@ -1,5 +1,6 @@
 import QtQuick
 import Quickshell.Hyprland
+import qs.io
 import qs.components
 
 BarModule {

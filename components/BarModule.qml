@@ -1,4 +1,5 @@
 import QtQuick
+import qs.io
 import qs.components
 
 FocusScope {
