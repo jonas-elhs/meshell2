@@ -53,8 +53,8 @@ PanelWindow {
         implicitWidth: root.barWidth
         implicitHeight: parent.height
 
-        Clock {
-            id: clock
+        Time {
+            id: time
 
             width: content.width
             anchors.top: parent.top
