@@ -1,14 +1,9 @@
-import Quickshell
+import qs.io
 import qs.components
 
 BarModule {
     BarItem {
         icon: "schedule"
-        text: Qt.formatTime(time.date, "hh\nmm")
-    }
-
-    SystemClock {
-        id: time
-        precision: SystemClock.Minutes
+        text: Qt.formatTime(CurrentTime.date, "hh\nmm")
     }
 }
