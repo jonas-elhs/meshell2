@@ -21,13 +21,13 @@ Item {
     implicitHeight: content.implicitHeight
     anchors.horizontalCenter: parent.horizontalCenter
 
-    Rectangle {
+    Squircle {
         id: background
 
         anchors.fill: parent
         anchors.margins: -root.spacing
 
-        color: hover.hovered || root.activeFocus ? Color.transparent(Config.foregroundColor, 0.2) : Color.transparent(Config.foregroundColor, 0)
+        color: hover.hovered || root.activeFocus ? Color.transparent(Config.foregroundColor, 0.4) : Color.transparent(Config.foregroundColor, 0)
         radius: Config.borderRadius - root.spacing
 
         Behavior on color {

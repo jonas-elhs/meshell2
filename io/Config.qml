@@ -10,5 +10,5 @@ Singleton {
 
     property int spacing: 20
     property int borderWidth: 2
-    property int borderRadius: 10
+    property int borderRadius: 20
 }

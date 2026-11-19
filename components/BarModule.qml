@@ -15,17 +15,17 @@ FocusScope {
     implicitWidth: content.implicitWidth
     implicitHeight: content.implicitHeight
 
-    Rectangle {
+    Squircle {
         id: background
 
         anchors.fill: parent
 
         color: root.styled ? Color.transparent(Config.backgroundColor, 0.01) : "transparent"
         radius: Config.borderRadius
-        border.width: root.styled ? Config.borderWidth : 0
-        border.color: hover.hovered || root.activeFocus ? Config.accentColor : Config.inactiveColor
+        borderWidth: root.styled ? Config.borderWidth : 0
+        borderColor: hover.hovered || root.activeFocus ? Config.accentColor : Config.inactiveColor
 
-        Behavior on border.color {
+        Behavior on borderColor {
             CustomColorAnimation {}
         }
     }
