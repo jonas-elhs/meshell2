@@ -30,23 +30,23 @@ void main()
   vec2 pos = abs((qt_TexCoord0 - 0.5) * size);
   vec2 q = pos - halfSize + r;
 
-  // Superellipse corner distance
-  vec2 corner = max(q, 0.0);
-  float d;
-  if (abs(p - 4.0) < 0.001) {
-    vec2 c2 = corner * corner;
-    d = sqrt(sqrt(dot(c2, c2)));
-  } else {
-    d = pow(
-      pow(corner.x, p) + pow(corner.y, p),
-      1.0 / p
-    );
-  }
-
   // Signed distance approximation
+  vec2 corner = max(q, 0.0);
+
+  float sum = pow(corner.x, p) + pow(corner.y, p);
+  float d = pow(sum, 1.0 / p);
+
   float dist = d + min(max(q.x, q.y), 0.0) - r;
 
-  // Antialiasing
+  // Gradient correction for Euclidean distance
+  if (q.x > 0.0 && q.y > 0.0 && d > 0.0001) {
+      vec2 gradient = pow(corner, vec2(p - 1.0))
+                    / pow(d, p - 1.0);
+
+      float gradientLength = length(gradient);
+      dist /= max(gradientLength, 0.0001);
+  }
+
   float aa = max(fwidth(dist), 0.0001);
   float coverage = 1.0 - smoothstep(-aa, aa, dist);
 
