@@ -5,6 +5,7 @@ import Quickshell.Io
 import Quickshell.Hyprland
 import qs.modules
 import qs.modules.bar
+import qs.modules.lock
 
 ShellRoot {
     id: root
@@ -22,12 +23,20 @@ ShellRoot {
         function setWallpaper(path: string) {
             root.wallpaperPath = path;
         }
+
+        function lock() {
+            lockscreen.locked = true;
+        }
     }
     GlobalShortcut {
         name: "power"
         appid: "meshell"
         description: "Toggle power menu"
         onPressed: root.showPowerMenu = !root.showPowerMenu
+    }
+
+    Lock {
+        id: lockscreen
     }
 
     Variants {
