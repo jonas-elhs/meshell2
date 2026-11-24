@@ -1,5 +1,6 @@
 import Quickshell
 import Quickshell.Wayland
+import qs.io
 
 PanelWindow {
     required property Bar bar
@@ -8,7 +9,7 @@ PanelWindow {
 
     implicitWidth: bar.barWidth
 
-    margins: bar.margins
+    margins.left: Config.spacing
     anchors.top: true
     anchors.left: true
     anchors.bottom: true

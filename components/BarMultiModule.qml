@@ -10,6 +10,7 @@ BarModule {
     readonly property Component module: root.conditionalModule ?? root.defaultModule ?? null
 
     padding: current.item.padding
+    alignOnEdge: current.item.alignOnEdge
     adjustContentSpacing: current.item.adjustContentSpacing
     onScrolled: event => current.item.onScrolled(event)
 
@@ -49,6 +50,10 @@ BarModule {
         next.opacity = 1;
 
         [current, next] = [next, current];
+    }
+
+    Behavior on x {
+        CustomNumberAnimation {}
     }
 
     component ModuleLoader: Loader {

@@ -1,5 +1,6 @@
 pragma ComponentBehavior: Bound
 
+import QtQuick
 import Quickshell
 import Quickshell.Io
 import Quickshell.Hyprland
@@ -54,6 +55,7 @@ ShellRoot {
 
             Bar {
                 id: bar
+                locked: lockscreen.locked
                 showPowerMenu: root.showPowerMenu
                 onPowerMenuToggleRequested: root.showPowerMenu = !root.showPowerMenu
             }

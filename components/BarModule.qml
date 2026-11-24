@@ -9,11 +9,14 @@ FocusScope {
     property int padding: Config.spacing / 2
     property bool adjustContentSpacing: true
     property bool styled: true
+    property bool alignOnEdge: false
 
     signal scrolled(event: WheelEvent)
 
     implicitWidth: content.implicitWidth
     implicitHeight: content.implicitHeight
+
+    x: alignOnEdge ? -Config.spacing : 0
 
     Squircle {
         id: background

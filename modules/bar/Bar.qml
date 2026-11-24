@@ -9,6 +9,7 @@ PanelWindow {
     id: root
 
     required property bool showPowerMenu
+    required property bool locked
     readonly property int barWidth: 40
     signal powerMenuToggleRequested
 
@@ -34,10 +35,6 @@ PanelWindow {
     }
     exclusionMode: ExclusionMode.Ignore
 
-    margins.top: Config.spacing
-    margins.left: Config.spacing
-    margins.bottom: Config.spacing
-
     color: "transparent"
 
     HyprlandFocusGrab {
@@ -51,7 +48,14 @@ PanelWindow {
         id: content
 
         implicitWidth: root.barWidth
-        implicitHeight: parent.height
+
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.bottom: parent.bottom
+
+        anchors.topMargin: Config.spacing
+        anchors.leftMargin: Config.spacing
+        anchors.bottomMargin: Config.spacing
 
         Time {
             id: time
@@ -65,8 +69,8 @@ PanelWindow {
 
             MultiModuleComponent {
                 Workspaces {
-                    width: content.width
                     styled: false
+                    width: content.width
                 }
             }
 
@@ -76,6 +80,15 @@ PanelWindow {
                 PowerMenu {
                     styled: false
                     onCloseRequested: root.powerMenuToggleRequested()
+                }
+            }
+
+            MultiModuleComponent {
+                condition: root.locked
+
+                Locked {
+                    styled: false
+                    screen: root.screen
                 }
             }
         }
