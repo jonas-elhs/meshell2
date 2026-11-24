@@ -4,6 +4,7 @@ import QtQuick
 import Quickshell
 import Quickshell.Io
 import Quickshell.Hyprland
+import qs.io
 import qs.modules
 import qs.modules.bar
 import qs.modules.lock
@@ -26,7 +27,7 @@ ShellRoot {
         }
 
         function lock() {
-            lockscreen.locked = true;
+            ShellState.locked = true;
         }
     }
     GlobalShortcut {
@@ -36,9 +37,7 @@ ShellRoot {
         onPressed: root.showPowerMenu = !root.showPowerMenu
     }
 
-    Lock {
-        id: lockscreen
-    }
+    Lock {}
 
     Variants {
         model: Quickshell.screens
@@ -55,7 +54,6 @@ ShellRoot {
 
             Bar {
                 id: bar
-                locked: lockscreen.locked
                 showPowerMenu: root.showPowerMenu
                 onPowerMenuToggleRequested: root.showPowerMenu = !root.showPowerMenu
             }

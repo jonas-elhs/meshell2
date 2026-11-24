@@ -9,7 +9,6 @@ PanelWindow {
     id: root
 
     required property bool showPowerMenu
-    required property bool locked
     readonly property int barWidth: 40
     signal powerMenuToggleRequested
 
@@ -84,7 +83,7 @@ PanelWindow {
             }
 
             MultiModuleComponent {
-                condition: root.locked
+                condition: ShellState.locked
 
                 Locked {
                     styled: false

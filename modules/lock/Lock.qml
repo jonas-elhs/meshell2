@@ -9,7 +9,6 @@ import qs.io
 Item {
     id: root
 
-    property bool locked: false
     property string currentText
 
     PamContext {
@@ -17,7 +16,7 @@ Item {
 
         onCompleted: result => {
             if (result == PamResult.Success) {
-                root.locked = false;
+                ShellState.locked = false;
                 return;
             }
         }
@@ -32,7 +31,7 @@ Item {
     WlSessionLock {
         id: lock
 
-        locked: root.locked
+        locked: ShellState.locked
 
         WlSessionLockSurface {
             color: "transparent"
@@ -42,7 +41,7 @@ Item {
 
                 Button {
                     text: "unlock"
-                    onClicked: root.locked = false
+                    onClicked: ShellState.locked = false
                 }
 
                 Text {
