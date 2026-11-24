@@ -10,6 +10,7 @@ FocusScope {
     property bool adjustContentSpacing: true
     property bool styled: true
     property bool alignOnEdge: false
+    property bool showWhenLocked: false
 
     signal scrolled(event: WheelEvent)
 
@@ -17,6 +18,7 @@ FocusScope {
     implicitHeight: content.implicitHeight
 
     x: alignOnEdge ? -Config.spacing : 0
+    opacity: ShellState.locked && !showWhenLocked ? 0 : 1
 
     Squircle {
         id: background
@@ -49,5 +51,9 @@ FocusScope {
     WheelHandler {
         acceptedDevices: PointerDevice.Mouse | PointerDevice.TouchPad
         onWheel: event => root.scrolled(event)
+    }
+
+    Behavior on opacity {
+        CustomNumberAnimation {}
     }
 }

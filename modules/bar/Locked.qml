@@ -10,4 +10,5 @@ BarModule {
     height: screen.height
 
     alignOnEdge: true
+    showWhenLocked: true
 }

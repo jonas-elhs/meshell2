@@ -11,6 +11,7 @@ BarModule {
 
     padding: current.item.padding
     alignOnEdge: current.item.alignOnEdge
+    showWhenLocked: current.item.showWhenLocked
     adjustContentSpacing: current.item.adjustContentSpacing
     onScrolled: event => current.item.onScrolled(event)
 
