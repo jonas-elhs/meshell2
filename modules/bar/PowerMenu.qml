@@ -8,7 +8,7 @@ import qs.components
 BarModule {
     id: root
 
-    width: 120
+    implicitWidth: 120
 
     Component.onCompleted: shutdown.forceActiveFocus()
 

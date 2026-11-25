@@ -42,8 +42,6 @@ PanelWindow {
     Item {
         id: content
 
-        implicitWidth: ShellState.barWidth
-
         anchors.top: parent.top
         anchors.left: parent.left
         anchors.bottom: parent.bottom
@@ -55,7 +53,6 @@ PanelWindow {
         Time {
             id: time
 
-            width: content.width
             anchors.top: parent.top
         }
 
@@ -65,7 +62,6 @@ PanelWindow {
             MultiModuleComponent {
                 Workspaces {
                     styled: false
-                    width: content.width
                 }
             }
 
@@ -90,14 +86,12 @@ PanelWindow {
         SystemStats {
             id: system
 
-            width: content.width
             anchors.bottom: power.top
             anchors.bottomMargin: Config.spacing
         }
         PowerButton {
             id: power
 
-            width: content.width
             anchors.bottom: parent.bottom
         }
     }

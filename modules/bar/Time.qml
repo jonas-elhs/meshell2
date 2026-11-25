@@ -10,7 +10,6 @@ BarMultiModule {
     MultiModuleComponent {
         BarModule {
             styled: false
-            implicitWidth: root.width
 
             BarItem {
                 icon: "schedule"
@@ -25,7 +24,6 @@ BarMultiModule {
 
         BarModule {
             styled: false
-            implicitWidth: root.width
 
             BarItem {
                 icon: "calendar_month"

@@ -9,6 +9,8 @@ BarModule {
     readonly property Component conditionalModule: modules.find(module => module.condition)?.component ?? null
     readonly property Component module: root.conditionalModule ?? root.defaultModule ?? null
 
+    implicitWidth: content.implicitWidth
+
     padding: current.item.padding
     alignOnEdge: current.item.alignOnEdge
     showWhenLocked: current.item.showWhenLocked
@@ -19,6 +21,8 @@ BarModule {
     property ModuleLoader next: loader2
 
     Item {
+        id: content
+
         implicitWidth: root.current.implicitWidth
         implicitHeight: root.current.implicitHeight
 

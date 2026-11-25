@@ -14,7 +14,7 @@ FocusScope {
 
     signal scrolled(event: WheelEvent)
 
-    implicitWidth: content.implicitWidth
+    implicitWidth: ShellState.barWidth
     implicitHeight: content.implicitHeight
 
     x: alignOnEdge ? -Config.spacing : 0
