@@ -13,6 +13,8 @@ ShellRoot {
     id: root
 
     IpcHandler {
+        id: ipc
+
         target: "shell"
 
         function powerMenu() {
@@ -26,6 +28,18 @@ ShellRoot {
         function lock() {
             ShellState.locked = true;
         }
+    }
+    GlobalShortcut {
+        appid: "meshell"
+        name: "powerMenu"
+        description: "Toggle power menu"
+        onPressed: ipc.powerMenu()
+    }
+    GlobalShortcut {
+        appid: "meshell"
+        name: "lock"
+        description: "Lock screen"
+        onPressed: ipc.lock()
     }
 
     Lockscreen {}
