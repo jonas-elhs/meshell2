@@ -40,9 +40,7 @@ ShellRoot {
 
             property ShellScreen modelData
 
-            Background {
-                screen: scope.modelData
-            }
+            Background {}
 
             Bar {
                 id: bar

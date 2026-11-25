@@ -7,8 +7,6 @@ import qs.components
 PanelWindow {
     id: root
 
-    required property ShellScreen screen
-
     property Wallpaper current: wallpaper1
     property Wallpaper next: wallpaper2
 
