@@ -29,12 +29,6 @@ ShellRoot {
             ShellState.locked = true;
         }
     }
-    GlobalShortcut {
-        name: "power"
-        appid: "meshell"
-        description: "Toggle power menu"
-        onPressed: root.showPowerMenu = !root.showPowerMenu
-    }
 
     Lock {}
 
