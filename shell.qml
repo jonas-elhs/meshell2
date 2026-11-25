@@ -28,7 +28,7 @@ ShellRoot {
         }
     }
 
-    Lock {
+    Lockscreen {
         barWidth: bar.barWidth
     }
 
