@@ -13,7 +13,6 @@ ShellRoot {
     id: root
 
     property bool showPowerMenu: false
-    property string wallpaperPath: "/home/jonas/wallpapers/moon.png"
 
     IpcHandler {
         target: "shell"
@@ -23,7 +22,7 @@ ShellRoot {
         }
 
         function setWallpaper(path: string) {
-            root.wallpaperPath = path;
+            ShellState.wallpaperPath = path;
         }
 
         function lock() {
@@ -48,7 +47,6 @@ ShellRoot {
             property ShellScreen modelData
 
             Background {
-                path: root.wallpaperPath
                 screen: scope.modelData
             }
 

@@ -1,12 +1,12 @@
 import QtQuick
 import Quickshell
 import Quickshell.Wayland
+import qs.io
 import qs.components
 
 PanelWindow {
     id: root
 
-    required property string path
     required property ShellScreen screen
 
     property Wallpaper current: wallpaper1
@@ -33,12 +33,18 @@ PanelWindow {
     }
 
     Component.onCompleted: updateWallpaper()
-    onPathChanged: updateWallpaper()
+    Connections {
+        target: ShellState
+
+        function onWallpaperPathChanged() {
+            root.updateWallpaper();
+        }
+    }
     function updateWallpaper() {
         current.z = 1;
         current.opacity = 0;
 
-        next.source = root.path;
+        next.source = ShellState.wallpaperPath;
         next.z = 2;
         next.opacity = 1;
 
