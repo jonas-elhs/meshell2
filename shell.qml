@@ -17,11 +17,11 @@ ShellRoot {
     IpcHandler {
         target: "shell"
 
-        function togglePowerMenu() {
+        function powerMenu() {
             root.showPowerMenu = !root.showPowerMenu;
         }
 
-        function setWallpaper(path: string) {
+        function wallpaper(path: string) {
             ShellState.wallpaperPath = path;
         }
 
