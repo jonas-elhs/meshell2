@@ -32,25 +32,15 @@ ShellRoot {
 
     Lock {}
 
-    Variants {
-        model: Quickshell.screens
+    Background {}
 
-        Scope {
-            id: scope
+    Bar {
+        id: bar
+        showPowerMenu: root.showPowerMenu
+        onPowerMenuToggleRequested: root.showPowerMenu = !root.showPowerMenu
+    }
 
-            property ShellScreen modelData
-
-            Background {}
-
-            Bar {
-                id: bar
-                showPowerMenu: root.showPowerMenu
-                onPowerMenuToggleRequested: root.showPowerMenu = !root.showPowerMenu
-            }
-
-            Exclusions {
-                bar: bar
-            }
-        }
+    Exclusions {
+        bar: bar
     }
 }
