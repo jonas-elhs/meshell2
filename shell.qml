@@ -37,8 +37,7 @@ ShellRoot {
     Bar {
         id: bar
     }
-
-    Exclusions {
+    BarExclusions {
         bar: bar
     }
 }
