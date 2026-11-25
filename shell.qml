@@ -28,8 +28,7 @@ ShellRoot {
         }
     }
 
-    Lock {}
-    LockWallpaper {
+    Lock {
         barWidth: bar.barWidth
     }
 

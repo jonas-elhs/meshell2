@@ -9,7 +9,12 @@ import qs.io
 Item {
     id: root
 
+    required property int barWidth
     property string currentText
+
+    LockWallpaper {
+        barWidth: root.barWidth
+    }
 
     PamContext {
         id: pam

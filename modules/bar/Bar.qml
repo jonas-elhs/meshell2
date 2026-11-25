@@ -10,7 +10,7 @@ PanelWindow {
 
     readonly property int barWidth: 40
 
-    WlrLayershell.layer: WlrLayer.Top
+    WlrLayershell.layer: ShellState.locked ? WlrLayer.Overlay : WlrLayer.Top
     WlrLayershell.namespace: "meshell-bar"
 
     anchors.left: true
