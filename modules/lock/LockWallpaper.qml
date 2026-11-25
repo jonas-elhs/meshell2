@@ -43,17 +43,9 @@ PanelWindow {
             fillMode: Image.PreserveAspectCrop
         }
 
-        Behavior on x {
-            CustomNumberAnimation {}
-        }
-        Behavior on opacity {
-            CustomNumberAnimation {}
-        }
-        Behavior on implicitWidth {
-            CustomNumberAnimation {}
-        }
-        Behavior on implicitHeight {
-            CustomNumberAnimation {}
-        }
+        CustomNumberBehavior on x {}
+        CustomNumberBehavior on opacity {}
+        CustomNumberBehavior on implicitWidth {}
+        CustomNumberBehavior on implicitHeight {}
     }
 }

@@ -30,9 +30,7 @@ FocusScope {
         borderWidth: root.styled ? Config.borderWidth : 0
         borderColor: hover.hovered || root.activeFocus ? Config.accentColor : Config.inactiveColor
 
-        Behavior on borderColor {
-            CustomColorAnimation {}
-        }
+        CustomColorBehavior on borderColor {}
     }
 
     Column {
@@ -53,7 +51,5 @@ FocusScope {
         onWheel: event => root.scrolled(event)
     }
 
-    Behavior on opacity {
-        CustomNumberAnimation {}
-    }
+    CustomNumberBehavior on opacity {}
 }

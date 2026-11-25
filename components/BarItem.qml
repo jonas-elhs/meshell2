@@ -30,9 +30,7 @@ Item {
         color: hover.hovered || root.activeFocus ? Color.transparent(Config.foregroundColor, 0.4) : Color.transparent(Config.foregroundColor, 0)
         radius: Config.borderRadius - root.spacing
 
-        Behavior on color {
-            CustomColorAnimation {}
-        }
+        CustomColorBehavior on color {}
     }
 
     Column {

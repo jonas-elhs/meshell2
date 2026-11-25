@@ -41,12 +41,8 @@ BarModule {
                 margin: 5
             }
 
-            Behavior on color {
-                CustomColorAnimation {}
-            }
-            Behavior on implicitHeight {
-                CustomNumberAnimation {}
-            }
+            CustomColorBehavior on color {}
+            CustomNumberBehavior on implicitHeight {}
         }
     }
 }

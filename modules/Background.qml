@@ -56,8 +56,6 @@ PanelWindow {
 
         fillMode: Image.PreserveAspectCrop
 
-        Behavior on opacity {
-            CustomNumberAnimation {}
-        }
+        CustomNumberBehavior on opacity {}
     }
 }

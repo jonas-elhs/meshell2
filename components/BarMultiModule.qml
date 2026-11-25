@@ -29,12 +29,8 @@ BarModule {
             id: loader2
         }
 
-        Behavior on implicitWidth {
-            CustomNumberAnimation {}
-        }
-        Behavior on implicitHeight {
-            CustomNumberAnimation {}
-        }
+        CustomNumberBehavior on implicitWidth {}
+        CustomNumberBehavior on implicitHeight {}
     }
 
     Component.onCompleted: updateModule()
@@ -53,18 +49,12 @@ BarModule {
         [current, next] = [next, current];
     }
 
-    Behavior on x {
-        CustomNumberAnimation {}
-    }
+    CustomNumberBehavior on x {}
 
     component ModuleLoader: Loader {
         anchors.verticalCenter: parent.verticalCenter
 
-        Behavior on scale {
-            CustomNumberAnimation {}
-        }
-        Behavior on opacity {
-            CustomNumberAnimation {}
-        }
+        CustomNumberBehavior on scale {}
+        CustomNumberBehavior on opacity {}
     }
 }
