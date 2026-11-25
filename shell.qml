@@ -12,13 +12,11 @@ import qs.modules.lock
 ShellRoot {
     id: root
 
-    property bool showPowerMenu: false
-
     IpcHandler {
         target: "shell"
 
         function powerMenu() {
-            root.showPowerMenu = !root.showPowerMenu;
+            ShellState.showPowerMenu = !ShellState.showPowerMenu;
         }
 
         function wallpaper(path: string) {
@@ -39,8 +37,6 @@ ShellRoot {
 
     Bar {
         id: bar
-        showPowerMenu: root.showPowerMenu
-        onPowerMenuToggleRequested: root.showPowerMenu = !root.showPowerMenu
     }
 
     Exclusions {

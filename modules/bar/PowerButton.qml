@@ -1,11 +1,10 @@
 import QtQml
 import Quickshell
+import qs.io
 import qs.components
 
 BarModule {
     id: root
-
-    signal powerMenuToggleRequested
 
     BarItem {
         icon: "power_settings_new"
@@ -16,7 +15,7 @@ BarModule {
             if (button == Qt.LeftButton)
                 Quickshell.execDetached(["systemctl", "poweroff"]);
             else if (button == Qt.RightButton)
-                root.powerMenuToggleRequested();
+                ShellState.showPowerMenu = !ShellState.showPowerMenu;
         }
     }
 }

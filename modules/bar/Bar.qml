@@ -8,9 +8,7 @@ import qs.components
 PanelWindow {
     id: root
 
-    required property bool showPowerMenu
     readonly property int barWidth: 40
-    signal powerMenuToggleRequested
 
     WlrLayershell.layer: WlrLayer.Top
     WlrLayershell.namespace: "meshell-bar"
@@ -37,10 +35,10 @@ PanelWindow {
     color: "transparent"
 
     HyprlandFocusGrab {
-        active: root.showPowerMenu
+        active: ShellState.showPowerMenu
         windows: [root]
 
-        onCleared: root.powerMenuToggleRequested()
+        onCleared: ShellState.showPowerMenu = false
     }
 
     Item {
@@ -74,11 +72,10 @@ PanelWindow {
             }
 
             MultiModuleComponent {
-                condition: root.showPowerMenu
+                condition: ShellState.showPowerMenu
 
                 PowerMenu {
                     styled: false
-                    onCloseRequested: root.powerMenuToggleRequested()
                 }
             }
 
@@ -104,8 +101,6 @@ PanelWindow {
 
             width: content.width
             anchors.bottom: parent.bottom
-
-            onPowerMenuToggleRequested: root.powerMenuToggleRequested()
         }
     }
 }

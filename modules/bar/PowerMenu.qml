@@ -8,8 +8,6 @@ import qs.components
 BarModule {
     id: root
 
-    signal closeRequested
-
     width: 120
 
     Component.onCompleted: shutdown.forceActiveFocus()
@@ -85,7 +83,7 @@ BarModule {
             event.accepted = true;
         }
         Keys.onEscapePressed: event => {
-            root.closeRequested();
+            ShellState.showPowerMenu = false;
             event.accepted = true;
         }
         Keys.onPressed: event => {
