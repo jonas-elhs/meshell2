@@ -9,7 +9,8 @@ FocusScope {
     property int padding: Config.spacing / 2
     property bool adjustContentSpacing: true
     property bool styled: true
-    property bool alignOnEdge: false
+    property int leftMargin: 0
+    property int borderRadius: Config.borderRadius
     property bool showWhenLocked: false
 
     signal scrolled(event: WheelEvent)
@@ -17,7 +18,7 @@ FocusScope {
     implicitWidth: ShellState.barWidth
     implicitHeight: content.implicitHeight
 
-    x: alignOnEdge ? -Config.spacing : 0
+    x: root.leftMargin
     opacity: ShellState.locked && !showWhenLocked ? 0 : 1
 
     Squircle {
@@ -26,7 +27,7 @@ FocusScope {
         anchors.fill: parent
 
         color: root.styled ? Color.transparent(Config.backgroundColor, 0.01) : "transparent"
-        radius: Config.borderRadius
+        radius: root.borderRadius
         borderWidth: root.styled ? Config.borderWidth : 0
         borderColor: hover.hovered || root.activeFocus ? Config.accentColor : Config.inactiveColor
 

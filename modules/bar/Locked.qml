@@ -1,4 +1,5 @@
 import Quickshell
+import qs.io
 import qs.components
 
 BarModule {
@@ -6,9 +7,11 @@ BarModule {
 
     required property ShellScreen screen
 
-    width: screen.width
-    height: screen.height
+    implicitWidth: screen.width + 2 * Config.borderWidth
+    implicitHeight: screen.height + 2 * Config.borderWidth
 
-    alignOnEdge: true
+    padding: 0
+    borderRadius: 0
+    leftMargin: -Config.spacing - Config.borderWidth
     showWhenLocked: true
 }

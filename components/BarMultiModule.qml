@@ -12,7 +12,8 @@ BarModule {
     implicitWidth: content.implicitWidth
 
     padding: current.item.padding
-    alignOnEdge: current.item.alignOnEdge
+    leftMargin: current.item.leftMargin
+    borderRadius: current.item.borderRadius
     showWhenLocked: current.item.showWhenLocked
     adjustContentSpacing: current.item.adjustContentSpacing
     onScrolled: event => current.item.onScrolled(event)
