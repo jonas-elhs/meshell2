@@ -7,7 +7,7 @@ PanelWindow {
 
     WlrLayershell.namespace: "meshell-bar-exclusions"
 
-    implicitWidth: bar.barWidth
+    implicitWidth: ShellState.barWidth
 
     margins.left: Config.spacing
     anchors.top: true

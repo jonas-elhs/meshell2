@@ -28,16 +28,10 @@ ShellRoot {
         }
     }
 
-    Lockscreen {
-        barWidth: bar.barWidth
-    }
+    Lockscreen {}
 
     Background {}
 
-    Bar {
-        id: bar
-    }
-    BarExclusions {
-        bar: bar
-    }
+    Bar {}
+    BarExclusions {}
 }

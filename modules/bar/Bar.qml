@@ -8,8 +8,6 @@ import qs.components
 PanelWindow {
     id: root
 
-    readonly property int barWidth: 40
-
     WlrLayershell.layer: ShellState.locked ? WlrLayer.Overlay : WlrLayer.Top
     WlrLayershell.namespace: "meshell-bar"
 
@@ -44,7 +42,7 @@ PanelWindow {
     Item {
         id: content
 
-        implicitWidth: root.barWidth
+        implicitWidth: ShellState.barWidth
 
         anchors.top: parent.top
         anchors.left: parent.left

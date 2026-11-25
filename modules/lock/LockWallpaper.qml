@@ -8,8 +8,6 @@ import qs.components
 PanelWindow {
     id: root
 
-    required property int barWidth
-
     anchors {
         top: true
         bottom: true
@@ -30,7 +28,7 @@ PanelWindow {
 
         x: ShellState.locked ? 0 : 20
         opacity: ShellState.locked ? 1 : 0
-        implicitWidth: ShellState.locked ? root.screen.width : root.barWidth
+        implicitWidth: ShellState.locked ? root.screen.width : ShellState.barWidth
         implicitHeight: ShellState.locked ? root.screen.height : 0
 
         Image {
