@@ -4,6 +4,7 @@ import QtQuick
 import Quickshell.Wayland
 import Quickshell.Services.Pam
 import qs.io
+import qs.components
 
 Item {
     id: root
@@ -54,15 +55,21 @@ Item {
 
                     if (key === Qt.Key_Enter || key === Qt.Key_Return)
                         pam.start();
-                    else if (key === Qt.Key_Escape)
+                    else if (key === Qt.Key_Escape) {
                         root.password = "";
-                    else if (key === Qt.Key_Backspace)
-                        if (event.modifiers & Qt.ControlModifier)
+                        passwordDotModel.clear();
+                    } else if (key === Qt.Key_Backspace) {
+                        if (event.modifiers & Qt.ControlModifier) {
                             root.password = "";
-                        else
+                            passwordDotModel.clear();
+                        } else {
                             root.password = root.password.slice(0, -1);
-                    else if (!(event.modifiers & (Qt.ControlModifier | Qt.MetaModifier | Qt.AltModifier)) && /^[\x20-\x7E]$/.test(event.text))
+                            passwordDotModel.remove(passwordDotModel.count - 1);
+                        }
+                    } else if (!(event.modifiers & (Qt.ControlModifier | Qt.MetaModifier | Qt.AltModifier)) && /^[\x20-\x7E]$/.test(event.text)) {
                         root.password += event.text;
+                        passwordDotModel.append({});
+                    }
 
                     event.accepted = true;
                 }
@@ -83,12 +90,41 @@ Item {
                     font.letterSpacing: -20
                 }
 
-                Text {
+                Item {
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.bottom: parent.bottom
                     anchors.bottomMargin: 200
+                    width: dots.width
 
-                    text: root.password
+                    ListView {
+                        id: dots
+
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        width: contentWidth
+                        height: contentHeight
+
+                        spacing: 5
+                        interactive: false
+                        orientation: ListView.Horizontal
+
+                        model: ListModel {
+                            id: passwordDotModel
+                        }
+
+                        delegate: Rectangle {
+                            width: 10
+                            height: width
+                            radius: width / 2
+                            color: "red"
+                            opacity: 0
+
+                            Component.onCompleted: opacity = 1
+
+                            CustomNumberBehavior on opacity {}
+                        }
+
+                        CustomNumberBehavior on width {}
+                    }
                 }
             }
         }
