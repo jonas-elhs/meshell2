@@ -46,6 +46,10 @@ Item {
                     onClicked: ShellState.locked = false
                 }
 
+                HoverHandler {
+                    cursorShape: Qt.BlankCursor
+                }
+
                 Text {
                     anchors.centerIn: parent
 
