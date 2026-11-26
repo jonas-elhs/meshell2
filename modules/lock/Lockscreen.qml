@@ -1,7 +1,6 @@
 pragma ComponentBehavior: Bound
 
 import QtQuick
-import QtQuick.Controls
 import Quickshell.Wayland
 import Quickshell.Services.Pam
 import qs.io
@@ -9,7 +8,7 @@ import qs.io
 Item {
     id: root
 
-    property string currentText
+    property string password: ""
 
     LockWallpaper {}
 
@@ -17,6 +16,7 @@ Item {
         id: pam
 
         onCompleted: result => {
+            root.password = "";
             if (result == PamResult.Success) {
                 ShellState.locked = false;
                 return;
@@ -25,7 +25,7 @@ Item {
 
         onPamMessage: {
             if (this.responseRequired) {
-                this.respond(root.currentText);
+                this.respond(root.password);
             }
         }
     }
@@ -40,6 +40,25 @@ Item {
 
             Item {
                 anchors.fill: parent
+
+                focus: true
+                Keys.onPressed: event => {
+                    const key = event.key;
+
+                    if (key === Qt.Key_Enter || key === Qt.Key_Return)
+                        pam.start();
+                    else if (key === Qt.Key_Escape)
+                        root.password = "";
+                    else if (key === Qt.Key_Backspace)
+                        if (event.modifiers & Qt.ControlModifier)
+                            root.password = "";
+                        else
+                            root.password = root.password.slice(0, -1);
+                    else if (!(event.modifiers & (Qt.ControlModifier | Qt.MetaModifier | Qt.AltModifier)) && /^[\x20-\x7E]$/.test(event.text))
+                        root.password += event.text;
+
+                    event.accepted = true;
+                }
 
                 HoverHandler {
                     cursorShape: Qt.BlankCursor
@@ -57,17 +76,12 @@ Item {
                     font.letterSpacing: -20
                 }
 
-                TextField {
+                Text {
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.bottom: parent.bottom
                     anchors.bottomMargin: 200
-                    focus: true
 
-                    onTextChanged: root.currentText = this.text
-
-                    onAccepted: {
-                        pam.start();
-                    }
+                    text: root.password
                 }
             }
         }
