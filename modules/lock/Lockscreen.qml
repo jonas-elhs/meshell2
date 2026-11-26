@@ -9,6 +9,7 @@ Item {
     id: root
 
     property string password: ""
+    property bool authenticating: false
 
     LockWallpaper {}
 
@@ -17,6 +18,8 @@ Item {
 
         onCompleted: result => {
             root.password = "";
+            root.authenticating = false;
+
             if (result == PamResult.Success) {
                 ShellState.locked = false;
                 return;
@@ -25,6 +28,7 @@ Item {
 
         onPamMessage: {
             if (this.responseRequired) {
+                root.authenticating = true;
                 this.respond(root.password);
             }
         }
@@ -44,6 +48,9 @@ Item {
                 focus: true
                 Keys.onPressed: event => {
                     const key = event.key;
+
+                    if (root.authenticating == true)
+                        return;
 
                     if (key === Qt.Key_Enter || key === Qt.Key_Return)
                         pam.start();
