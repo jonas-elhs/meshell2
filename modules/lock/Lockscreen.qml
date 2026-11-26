@@ -47,14 +47,21 @@ Item {
                 }
 
                 Text {
+                    anchors.centerIn: parent
+
                     text: Qt.formatDateTime(CurrentTime.date, "hh:mm")
                     color: "red"
                     anchors.horizontalCenter: parent.horizontalCenter
-                    font.pointSize: 90
+                    font.family: Config.font
+                    font.pointSize: 300
+                    font.weight: Font.Bold
+                    font.letterSpacing: -20
                 }
 
                 TextField {
-                    anchors.centerIn: parent
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.bottom: parent.bottom
+                    anchors.bottomMargin: 200
                     focus: true
 
                     onTextChanged: root.currentText = this.text
