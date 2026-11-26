@@ -52,6 +52,7 @@ Item {
 
             text: root.text
             color: Config.foregroundColor
+            font.family: Config.font
             font.pointSize: 13
         }
     }

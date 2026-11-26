@@ -11,4 +11,6 @@ Singleton {
     property int spacing: 20
     property int borderWidth: 2
     property int borderRadius: 20
+
+    property string font: "Maple Mono"
 }
