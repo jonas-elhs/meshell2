@@ -1,8 +1,9 @@
 import QtQuick
+import Quickshell
 import qs.io
 
 ShaderEffect {
-    property vector2d size: Qt.vector2d(width, height)
+    readonly property vector2d size: Qt.vector2d(width, height)
 
     property real radius: Config.borderRadius
     property real roundingPower: 4
@@ -11,5 +12,5 @@ ShaderEffect {
     property color color: "transparent"
     property color borderColor: "transparent"
 
-    fragmentShader: "squircle.frag.qsb"
+    fragmentShader: Quickshell.shellDir + "/assets/squircle.frag.qsb"
 }
