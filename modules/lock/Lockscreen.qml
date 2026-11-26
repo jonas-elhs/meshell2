@@ -41,11 +41,6 @@ Item {
             Item {
                 anchors.fill: parent
 
-                Button {
-                    text: "unlock"
-                    onClicked: ShellState.locked = false
-                }
-
                 HoverHandler {
                     cursorShape: Qt.BlankCursor
                 }
