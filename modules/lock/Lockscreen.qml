@@ -88,7 +88,7 @@ Item {
                     anchors.centerIn: parent
 
                     text: Qt.formatDateTime(CurrentTime.date, "hh:mm")
-                    color: "red"
+                    color: Config.foregroundColor
                     anchors.horizontalCenter: parent.horizontalCenter
                     font.family: Config.font
                     font.pointSize: 300
@@ -101,8 +101,8 @@ Item {
                     anchors.bottom: parent.bottom
                     anchors.bottomMargin: 200
 
-                    width: Math.max(dots.width + 40, 50)
-                    height: 40
+                    width: Math.max(dots.width, 10) + 2 * 20
+                    height: 8 + 2 * 15
                     radius: width / 2
                     color: "#242933"
 
@@ -112,9 +112,9 @@ Item {
                         anchors.centerIn: parent
 
                         icon: "lock"
-                        color: "red"
-                        weight: 500
-                        font.pointSize: 18
+                        color: Config.foregroundColor
+                        weight: 600
+                        font.pointSize: 12
                         opacity: root.password == "" ? 1 : 0
 
                         CustomNumberBehavior on opacity {}
@@ -125,7 +125,7 @@ Item {
 
                         anchors.centerIn: parent
                         width: contentWidth
-                        height: 10
+                        height: 8
 
                         spacing: 5
                         interactive: false
@@ -134,10 +134,10 @@ Item {
                         model: passwordDotModel
 
                         delegate: Rectangle {
-                            width: 10
+                            width: 8
                             height: width
                             radius: width / 2
-                            color: "red"
+                            color: Config.foregroundColor
 
                             scale: 0
                             opacity: 0
