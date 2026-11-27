@@ -95,17 +95,31 @@ Item {
                     anchors.bottom: parent.bottom
                     anchors.bottomMargin: 200
 
-                    width: dots.width + 20
-                    height: 30
+                    width: Math.max(dots.width + 40, 50)
+                    height: 40
                     radius: width / 2
                     color: "#242933"
+
+                    MaterialIcon {
+                        id: icon
+
+                        anchors.centerIn: parent
+
+                        icon: "lock"
+                        color: "red"
+                        weight: 500
+                        font.pointSize: 18
+                        opacity: root.password == "" ? 1 : 0
+
+                        CustomNumberBehavior on opacity {}
+                    }
 
                     ListView {
                         id: dots
 
                         anchors.centerIn: parent
                         width: contentWidth
-                        height: contentHeight
+                        height: 10
 
                         spacing: 5
                         interactive: false
@@ -116,8 +130,6 @@ Item {
                         }
 
                         delegate: Rectangle {
-                            anchors.verticalCenter: parent.verticalCenter
-
                             width: 10
                             height: width
                             radius: width / 2
