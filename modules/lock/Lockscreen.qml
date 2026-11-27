@@ -134,10 +134,15 @@ Item {
                             height: width
                             radius: width / 2
                             color: "red"
+
+                            scale: 0
                             opacity: 0
+                            Component.onCompleted: {
+                                scale = 1;
+                                opacity = 1;
+                            }
 
-                            Component.onCompleted: opacity = 1
-
+                            CustomNumberBehavior on scale {}
                             CustomNumberBehavior on opacity {}
                         }
 
