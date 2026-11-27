@@ -90,16 +90,20 @@ Item {
                     font.letterSpacing: -20
                 }
 
-                Item {
+                Rectangle {
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.bottom: parent.bottom
                     anchors.bottomMargin: 200
-                    width: dots.width
+
+                    width: dots.width + 20
+                    height: 30
+                    radius: width / 2
+                    color: "#242933"
 
                     ListView {
                         id: dots
 
-                        anchors.horizontalCenter: parent.horizontalCenter
+                        anchors.centerIn: parent
                         width: contentWidth
                         height: contentHeight
 
@@ -112,6 +116,8 @@ Item {
                         }
 
                         delegate: Rectangle {
+                            anchors.verticalCenter: parent.verticalCenter
+
                             width: 10
                             height: width
                             radius: width / 2
