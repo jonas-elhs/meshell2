@@ -12,6 +12,18 @@ Item {
     property string password: ""
     property bool authenticating: false
 
+    onPasswordChanged: {
+        while (passwordDotModel.count < password.length)
+            passwordDotModel.append({});
+
+        while (passwordDotModel.count > password.length)
+            passwordDotModel.remove(passwordDotModel.count - 1);
+    }
+
+    ListModel {
+        id: passwordDotModel
+    }
+
     LockWallpaper {}
 
     PamContext {
@@ -55,21 +67,15 @@ Item {
                     if (key === Qt.Key_Enter || key === Qt.Key_Return) {
                         root.authenticating = true;
                         pam.start();
-                    } else if (key === Qt.Key_Escape) {
+                    } else if (key === Qt.Key_Escape)
                         root.password = "";
-                        passwordDotModel.clear();
-                    } else if (key === Qt.Key_Backspace) {
-                        if (event.modifiers & Qt.ControlModifier) {
+                    else if (key === Qt.Key_Backspace) {
+                        if (event.modifiers & Qt.ControlModifier)
                             root.password = "";
-                            passwordDotModel.clear();
-                        } else if (passwordDotModel.count > 0) {
+                        else if (passwordDotModel.count > 0)
                             root.password = root.password.slice(0, -1);
-                            passwordDotModel.remove(passwordDotModel.count - 1);
-                        }
-                    } else if (!(event.modifiers & (Qt.ControlModifier | Qt.MetaModifier | Qt.AltModifier)) && /^[\x20-\x7E]$/.test(event.text)) {
+                    } else if (!(event.modifiers & (Qt.ControlModifier | Qt.MetaModifier | Qt.AltModifier)) && /^[\x20-\x7E]$/.test(event.text))
                         root.password += event.text;
-                        passwordDotModel.append({});
-                    }
 
                     event.accepted = true;
                 }
@@ -125,9 +131,7 @@ Item {
                         interactive: false
                         orientation: ListView.Horizontal
 
-                        model: ListModel {
-                            id: passwordDotModel
-                        }
+                        model: passwordDotModel
 
                         delegate: Rectangle {
                             width: 10
