@@ -29,7 +29,6 @@ Item {
 
         onPamMessage: {
             if (this.responseRequired) {
-                root.authenticating = true;
                 this.respond(root.password);
             }
         }
@@ -50,12 +49,13 @@ Item {
                 Keys.onPressed: event => {
                     const key = event.key;
 
-                    if (root.authenticating == true)
+                    if (root.authenticating)
                         return;
 
-                    if (key === Qt.Key_Enter || key === Qt.Key_Return)
+                    if (key === Qt.Key_Enter || key === Qt.Key_Return) {
+                        root.authenticating = true;
                         pam.start();
-                    else if (key === Qt.Key_Escape) {
+                    } else if (key === Qt.Key_Escape) {
                         root.password = "";
                         passwordDotModel.clear();
                     } else if (key === Qt.Key_Backspace) {
