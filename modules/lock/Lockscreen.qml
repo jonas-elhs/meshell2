@@ -62,7 +62,7 @@ Item {
                         if (event.modifiers & Qt.ControlModifier) {
                             root.password = "";
                             passwordDotModel.clear();
-                        } else {
+                        } else if (passwordDotModel.count > 0) {
                             root.password = root.password.slice(0, -1);
                             passwordDotModel.remove(passwordDotModel.count - 1);
                         }
